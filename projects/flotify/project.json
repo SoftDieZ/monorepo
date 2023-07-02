@@ -1,0 +1,37 @@
+{
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "name": "flotify",
+  "projectType": "library",
+  "sourceRoot": "projects/flotify/src",
+  "prefix": "lib",
+  "targets": {
+    "build": {
+      "executor": "@angular-devkit/build-angular:ng-packagr",
+      "options": {
+        "project": "projects/flotify/ng-package.json"
+      },
+      "configurations": {
+        "production": {
+          "tsConfig": "projects/flotify/tsconfig.lib.prod.json"
+        },
+        "development": {
+          "tsConfig": "projects/flotify/tsconfig.lib.json"
+        }
+      },
+      "defaultConfiguration": "production",
+      "outputs": [
+        "{workspaceRoot}/dist/flotify"
+      ]
+    },
+    "test": {
+      "executor": "@angular-devkit/build-angular:karma",
+      "options": {
+        "tsConfig": "projects/flotify/tsconfig.spec.json",
+        "polyfills": [
+          "zone.js",
+          "zone.js/testing"
+        ]
+      }
+    }
+  }
+}
